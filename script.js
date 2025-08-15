@@ -179,6 +179,13 @@ function getPoint(e) {
 joystick.addEventListener("pointerdown", startJoy);
 joystick.addEventListener("pointermove", moveJoy);
 window.addEventListener("pointerup", endJoy);
+//try phone controls
+// Replace the current joystick events with:
+joystick.addEventListener("touchstart", startJoy);
+joystick.addEventListener("touchmove", moveJoy);
+joystick.addEventListener("touchend", endJoy);
+
+// Also keep pointer events as fallback
 
 dashBtn.addEventListener("click", () => tryDash());
 

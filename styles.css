@@ -28,6 +28,9 @@ body {
     "Helvetica Neue", Arial;
   overflow: hidden;
   user-select: none;
+  /* try phone controls */
+  touch-action: none;
+  overflow: hidden;
 }
 
 .wrap {

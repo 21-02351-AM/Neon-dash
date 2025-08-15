@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Neon Dodge — Web Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="hud">
+        <div class="badge">
+          <span class="dot"></span> <strong>Score</strong>:
+          <span id="score">0</span>
+        </div>
+        <div class="badge">
+          <span class="dot" style="background: var(--ok)"></span>
+          <strong>Best</strong>: <span id="best">0</span>
+        </div>
+        <div class="badge">
+          <span class="dot" style="background: var(--accent2)"></span>
+          <strong>Level</strong>: <span id="level">1</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <canvas
+          id="game"
+          width="860"
+          height="560"
+          aria-label="Neon Dodge Game"
+        ></canvas>
+
+        <div class="overlay" id="startOverlay">
+          <div class="modal">
+            <h1 class="title">Neon Dodge</h1>
+            <p class="subtitle">
+              Dodge the incoming blocks. Survive to score. Speed ramps up every
+              15 seconds.
+            </p>
+            <div class="grid">
+              <div class="pill">
+                Move: <span class="kbd">WASD</span> /
+                <span class="kbd">Arrow Keys</span>
+              </div>
+              <div class="pill">
+                Dash: <span class="kbd">Space</span> (short burst)
+              </div>
+              <div class="pill">Pause/Resume: <span class="kbd">P</span></div>
+              <div class="pill">Restart: <span class="kbd">R</span></div>
+            </div>
+            <p style="margin: 14px 0 18px; color: var(--muted)">
+              On mobile, use the joystick and the Dash button.
+            </p>
+            <button class="btn" id="startBtn">Start</button>
+          </div>
+        </div>
+
+        <div class="overlay" id="gameOver" style="display: none">
+          <div class="modal">
+            <h2 class="title" style="margin-bottom: 4px">Game Over</h2>
+            <p class="subtitle" id="summary"></p>
+            <div
+              style="
+                display: flex;
+                gap: 10px;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-top: 6px;
+              "
+            >
+              <button class="btn" id="retryBtn">Retry</button>
+              <button class="btn" id="shareBtn" title="Copy score to clipboard">
+                Share
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile controls -->
+        <div class="joystick" id="joystick" aria-hidden="true">
+          <div class="stick" id="stick"></div>
+        </div>
+        <button class="btn tap" id="dashBtn" aria-hidden="true">Dash</button>
+      </div>
+
+      <div class="panel">
+        <button class="btn" id="pauseBtn">Pause</button>
+        <button class="btn" id="resumeBtn" disabled>Resume</button>
+        <button class="btn" id="restartBtn">Restart</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

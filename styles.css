@@ -1,0 +1,247 @@
+:root {
+  --bg: #0b0f1a;
+  --panel: #0f1629;
+  --text: #e6f0ff;
+  --muted: #9bb0d6;
+  --accent: #78f3ff;
+  --accent2: #9d7bff;
+  --danger: #ff5b7f;
+  --ok: #5bffb4;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 80% 0%, #101a35 0%, var(--bg) 55%)
+    no-repeat fixed;
+  color: var(--text);
+  font: 500 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial;
+  overflow: hidden;
+  user-select: none;
+}
+
+.wrap {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+/* HUD */
+.hud {
+  position: absolute;
+  inset: 16px 16px auto 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  z-index: 5;
+}
+
+.badge {
+  background: linear-gradient(180deg, #19264b, #0f1730);
+  border: 1px solid #243466;
+  box-shadow: var(--shadow);
+  padding: 8px 12px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+/* Panel */
+.panel {
+  position: absolute;
+  inset: auto 16px 16px 16px;
+  background: linear-gradient(180deg, #0e1428, #0b1122);
+  border: 1px solid #1f2a4b;
+  border-radius: 18px;
+  padding: 12px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid #2b3767;
+  color: var(--text);
+  background: linear-gradient(180deg, #111c3a, #0e1631);
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.05s ease, border-color 0.2s, background 0.2s;
+  box-shadow: var(--shadow);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.btn:hover {
+  border-color: #3d4c8a;
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.995);
+}
+
+/* Canvas Card */
+.card {
+  width: min(860px, 96vw);
+  height: min(560px, 70vh);
+  background: linear-gradient(180deg, #0e152b, #0a0f1f);
+  border: 1px solid #1b264b;
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: crisp-edges;
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(2px) brightness(0.95);
+  background: radial-gradient(
+    700px 420px at 50% 20%,
+    rgba(121, 243, 255, 0.06),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.modal {
+  background: linear-gradient(180deg, #0f1832, #0d1226);
+  border: 1px solid #20305e;
+  padding: 22px;
+  border-radius: 18px;
+  width: min(540px, 92vw);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(22px, 3.2vw, 30px);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  margin: 0 0 6px;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0 0 14px;
+}
+
+.kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+    monospace;
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.pill {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #0f1938;
+  border: 1px solid #25356b;
+}
+
+/* Mobile controls */
+.joystick {
+  position: absolute;
+  left: 16px;
+  bottom: 80px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #26325e;
+  box-shadow: var(--shadow);
+  touch-action: none;
+}
+
+.stick {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle at 30% 30%,
+    #91f0ff,
+    #6de6ff 40%,
+    #3fb9ff 70%,
+    #2759ff
+  );
+  border: 2px solid #20305e;
+}
+
+.tap {
+  position: absolute;
+  right: 16px;
+  bottom: 80px;
+  height: 56px;
+  padding: 0 18px;
+  display: grid;
+  place-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 700px) {
+  .panel {
+    inset: auto 12px 12px 12px;
+  }
+  .hud {
+    inset: 12px;
+  }
+  .card {
+    height: min(70vh, 520px);
+  }
+  .joystick,
+  .tap {
+    display: block;
+  }
+}
+
+@media (min-width: 701px) {
+  .joystick,
+  .tap {
+    display: none;
+  }
+}
